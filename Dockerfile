@@ -5,7 +5,8 @@ ENV JAVA_VERSION_BUILD 17
 ENV JAVA_PACKAGE server-jre
 
 # Download and unarchive Java
-RUN mkdir /opt && curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie"\
+RUN apk add --no-cache curl && \
+    mkdir /opt && curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie"\
     http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION}-linux-x64.tar.gz \
     | tar -xzf - -C /opt &&\
     ln -s /opt/jdk1.* /opt/jdk &&\
