@@ -1,7 +1,7 @@
 FROM quay.io/vektorcloud/glibc:latest
 
 ENV JAVA_VERSION 8u77
-ENV JAVA_VERSION_BUILD 17
+ENV JAVA_VERSION_BUILD 03
 ENV JAVA_PACKAGE server-jre
 
 # Download and unarchive Java
