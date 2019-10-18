@@ -1,14 +1,13 @@
 FROM quay.io/vektorcloud/glibc:latest
 
-ENV JAVA_VERSION 8u171
-ENV JAVA_VERSION_BUILD 11
-ENV JAVA_PACKAGE server-jre
-ENV JAVA_HASH 512cd62ec5174c3487ac17c61aaa89e8
+ENV JAVA_VERSION 8u212
+ENV JAVA_VERSION_BUILD b10
+ENV JAVA_HASH 59066701cf1a433da9770636fbc4c9aa
 
 # Download and unarchive Java
 RUN apk add --no-cache curl wget tar bash && \
-    mkdir /opt && wget --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" -O - \
-    http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}-b${JAVA_VERSION_BUILD}/${JAVA_HASH}/${JAVA_PACKAGE}-${JAVA_VERSION}-linux-x64.tar.gz \
+    mkdir -p /opt && wget --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" -O - \
+    https://download.oracle.com/otn/java/jdk/${JAVA_VERSION}-${JAVA_VERSION_BUILD}/${JAVA_HASH}/server-jre-${JAVA_VERSION}-linux-x64.tar.gz \
     | tar -xzf - -C /opt &&\
     ln -s /opt/jdk1.* /opt/jdk &&\
     rm -rf /opt/jdk/*src.zip \
